@@ -23,7 +23,7 @@ describe('Acceptance: AsyncAction', function() {
   it('Ember.run.later() will force tests to wait for app to settle', function() {
     visit('/');
     click('.run-later');
-    andThen(function() {
+    return andThen(function() {
       expect(find('.status').text().trim()).to.equal('Async ran');
     });
   });
@@ -31,7 +31,7 @@ describe('Acceptance: AsyncAction', function() {
   it('Ember.run.later() wrapped in a promise will force tests to wait for app to settle', function() {
     visit('/');
     click('.promise-wrapped-run-later');
-    andThen(function() {
+    return andThen(function() {
       expect(find('.status').text().trim()).to.equal('Async ran');
     });
   });
@@ -39,7 +39,7 @@ describe('Acceptance: AsyncAction', function() {
   it('setTimeout() wrapped in a promise will force tests to wait for app to settle', function() {
     visit('/');
     click('.promise-wrapped-set-timeout');
-    andThen(function() {
+    return andThen(function() {
       expect(find('.status').text().trim()).to.equal('Async ran');
     });
   });
