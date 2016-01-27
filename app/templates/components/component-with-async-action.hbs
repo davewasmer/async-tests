@@ -1,1 +1,7 @@
-<button {{action 'asyncAction'}}>Click me to start an async action!</button>
+<button class='run-later' {{action 'runLater'}}>Ember.run.later()</button>
+<button class='promise-wrapped-run-later' {{action 'promiseWrappedRunLater'}}>Ember.run.later() wrapped in a Promise</button>
+<button class='promise-wrapped-set-timeout' {{action 'promiseWrappedSetTimeout'}}>setTimeout() wrapped in a Promise</button>
+
+<div class='status'>
+  {{if asyncDidRun 'Async ran' 'Async did not run'}}
+</div>

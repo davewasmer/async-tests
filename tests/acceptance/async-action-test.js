@@ -20,13 +20,28 @@ describe('Acceptance: AsyncAction', function() {
     destroyApp(application);
   });
 
-  it('can visit /async-action', function() {
+  it('Ember.run.later() will force tests to wait for app to settle', function() {
     visit('/');
-
-    click('button');
-
+    click('.run-later');
     andThen(function() {
-      console.log('App has settled');
+      expect(find('.status').text().trim()).to.equal('Async ran');
     });
   });
+
+  it('Ember.run.later() wrapped in a promise will force tests to wait for app to settle', function() {
+    visit('/');
+    click('.promise-wrapped-run-later');
+    andThen(function() {
+      expect(find('.status').text().trim()).to.equal('Async ran');
+    });
+  });
+
+  it('setTimeout() wrapped in a promise will force tests to wait for app to settle', function() {
+    visit('/');
+    click('.promise-wrapped-set-timeout');
+    andThen(function() {
+      expect(find('.status').text().trim()).to.equal('Async ran');
+    });
+  });
+
 });
