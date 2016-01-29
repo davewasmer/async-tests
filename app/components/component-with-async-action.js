@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import doSomethingAsync from '../utils/something-async';
 
 export default Ember.Component.extend({
 
@@ -22,7 +23,6 @@ export default Ember.Component.extend({
         setTimeout(() => {
           Ember.run(null, () => {
             this.set('asyncDidRun', true);
-            resolve();
           });
         }, 500);
       });
@@ -42,9 +42,9 @@ export default Ember.Component.extend({
         });
       });
     },
-    // katiesApproach() {
-    //   doSomethingAsync
-    // }
+    katiesApproach() {
+      doSomethingAsync();
+    }
   }
 
 });
